@@ -11,6 +11,12 @@ public class Quicksort {
 		this.arr = arr;
 	}
 	
+	/**
+	 * Recursively runs Quicksort algorithm on the 
+	 * arrays left and right to the partition index. 
+	 * @param left: the left-most index of the array
+	 * @param right: the right-most index of the array
+	 * */
 	public void DoQuicksort(int left, int right) {
 		int index = Partition(left, right);
 		if(left < index - 1) {
@@ -21,6 +27,22 @@ public class Quicksort {
 		}
 	}
 
+	/**
+	 * Partitions the array in the following fashion - 
+	 * Left most index is i, right most index is j. 
+	 * While i is less than or equal to j, if value at i
+	 * is less than the pivot value, then increment i. If
+	 * value at j is greater than pivot value, then decrement j.
+	 * If value at i is equal to or greater than value at j,
+	 * then swap those values while i being less than or equal 
+	 * to j. Loop ends when i becomes greater than j. In that case,
+	 * return i as the index where array is split into two and sent
+	 * to DoQuicksort method to run algorithm recursively. 
+	 * 
+	 * @param left: left-most index of array
+	 * @param right: right-most index of array
+	 * @return index: the index where array is split
+	 * */
 	public int Partition(int left, int right) {
 		int i = left;
 		int j = right;
@@ -45,6 +67,10 @@ public class Quicksort {
 		return i;
 	}
 	
+	
+	/**
+	 * Utility method to display contents of array
+	 * */
 	public void printArray() {
 		for(int i=0; i<arr.length; i++) {
 			System.out.print(arr[i] + " ");
@@ -53,7 +79,6 @@ public class Quicksort {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int arr[] = {1,12,5,26,7,14,3,7,2};
 		Quicksort q = new Quicksort(arr);
 		System.out.println("Unsorted array: ");
