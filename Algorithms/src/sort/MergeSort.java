@@ -4,11 +4,12 @@ public class MergeSort {
 	
 	
 	void merge(int arr[], int l, int m, int r) {
-		//find sizes of the two subarrays to be merged
+		//find sizes of the two sub-arrays to be merged
 		int n1= m-l+1;
 		int n2= r-m;
 		
-		//create temp arrays
+		//create temp arrays, from left and right
+		//sub-arrays
 		int L[] = new int[n1];
 		int R[] = new int[n2];
 		
@@ -22,11 +23,13 @@ public class MergeSort {
 			R[j] = arr[m+1+j];
 		}
 		
-		//initial indices of the first and second subarrays
+		//reset indices of the left and right sub-arrays 
+		//to starting point = zero
 		int i=0, j=0;
 		
 		//initial index of merged array
 		int k=l;
+		
 		
 		while(i<n1 && j<n2) {
 			if(L[i] <= R[j]) {
@@ -41,11 +44,11 @@ public class MergeSort {
 		}
 		
 		//copy remaining elements of L[] if any...
-				while(i < n1) {
-					arr[k] = L[i];
-					i++;
-					k++;
-				}
+		while(i < n1) {
+			arr[k] = L[i];
+			i++;
+			k++;
+		}
 		
 		//copy remaining elements of R[] if any...
 		while(j < n2) {
@@ -61,10 +64,11 @@ public class MergeSort {
 	 * */
 	void sort(int arr[], int l, int r) {
 		if(l<r) {
-			//find the middle point
+			//find the middle index of array
 			int m = (l+r)/2;
 			
-			//sort first and second halves
+			//sort first and second halves of the array 
+			//split at index m
 			sort(arr, l, m);
 			sort(arr, m+1, r);
 			
@@ -83,17 +87,11 @@ public class MergeSort {
 		}
 		System.out.println();
 	}
-	
-	public static int[] driverFunction(int arr[]) {
-		MergeSort ob = new MergeSort();
-		ob.sort(arr,0,arr.length-1);
-		return arr;
-	}
-	
-	
+
 	public static void main(String args[]) {
-		int arr[] = {12,11,13,5,6,7};
+		//int arr[] = {12,11,13,5,6,7};
 		//int arr[] = {4,2};
+		int arr[] = {3,44,38,5,47,15,36,26,27,2,46,4,19,50,48};
 		
 		MergeSort ms = new MergeSort();
 		System.out.println("Unsorted array: ");
